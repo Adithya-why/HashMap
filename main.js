@@ -2,6 +2,9 @@ function HashMap(){
     //store the buckets at the index of the hash code of the key
     let hashArray = [];
 
+    //store all the keys inserted
+    let keys = [];
+
     //generates a hash code for a given string key
     function hash(key){
         let hashCode = 0;
@@ -26,6 +29,7 @@ function HashMap(){
         //if bucket doesnt exist create bukcet list at location code
         //and insert the key value
         if(!hashArray[code]){
+            keys.push(key);
             hashArray[code] = [[key,value]];
             console.log(hashArray);
             return
@@ -51,6 +55,7 @@ function HashMap(){
             //if bucket exists but key doesnt, the insert the new key value into bucket
 
             if(!found){
+                keys.push(key);
                 bucket.push([key.value])
                 return
             }
@@ -120,7 +125,19 @@ function HashMap(){
     }
 
 
-    return {hash,set,get,has,remove};
+    function length(){
+        return keys.length;
+    }
+
+    function clear(){
+        hashArray = [];
+    }
+
+
+
+
+
+    return {hash,set,get,has,remove,length,clear};
 }
 
 
@@ -132,3 +149,6 @@ hashObj.set("sfjk","LL")
 hashObj.get("sfjk");
 console.log(hashObj.has("sfjksdf"))
 hashObj.remove("sfjkjbjh");
+console.log(hashObj.length());
+hashObj.clear();
+hashObj.set("adi","s");
