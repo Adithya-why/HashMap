@@ -1,5 +1,5 @@
 function HashMap(){
-
+    //store the buckets at the index of the hash code of the key
     let hashArray = [];
 
     //generates a hash code for a given string key
@@ -64,7 +64,7 @@ function HashMap(){
     function get(key){
         code = hash(key);
         res = null;
-
+        //finds the bucket
         bucket = hashArray[code];
         if(bucket){
         for(let i = 0;i<bucket.length;i++){
@@ -90,9 +90,37 @@ function HashMap(){
         }
     }
 
+    function remove(key){
+
+        res = get(key);
+        if(!res){
+            console.log("DIDIDINOT REMOVE");
+
+            return false
+        }
 
 
-    return {hash,set,get,has};
+        code = hash(key);
+        res = null;
+        //finds the bucket
+        bucket = hashArray[code];
+        if(bucket){
+        for(let i = 0;i<bucket.length;i++){
+            if(bucket[i][0]===key){
+                bucket.splice(i,1);
+                console.log(hashArray);
+                return true;
+
+            }
+        }
+    }
+
+
+        
+    }
+
+
+    return {hash,set,get,has,remove};
 }
 
 
@@ -103,3 +131,4 @@ hashObj.set("adi","a");
 hashObj.set("sfjk","LL")
 hashObj.get("sfjk");
 console.log(hashObj.has("sfjksdf"))
+hashObj.remove("sfjkjbjh");
