@@ -5,6 +5,8 @@ function HashMap(){
     //store all the keys inserted
     let keys = [];
 
+    
+
     //generates a hash code for a given string key
     function hash(key){
         let hashCode = 0;
@@ -133,11 +135,30 @@ function HashMap(){
         hashArray = [];
     }
 
+    function keysf(){
+        return keys;
+    }
+
+    function values(){
+        vls = [];
+        for(let i=0;i<hashArray.length;i++){
+            bucket = hashArray[i];
+            if(bucket){
+                for(let j =0;j<bucket.length;j++){
+                    val = bucket[j][1]
+                    vls.push(val);
+                }
+            }
+        }
+
+        console.log(vls);
+        return vls;
+    }
 
 
 
 
-    return {hash,set,get,has,remove,length,clear};
+    return {hash,set,get,has,remove,length,clear,keysf,values};
 }
 
 
@@ -152,3 +173,6 @@ hashObj.remove("sfjkjbjh");
 console.log(hashObj.length());
 hashObj.clear();
 hashObj.set("adi","s");
+console.log(hashObj.keysf());
+hashObj.values();
+
