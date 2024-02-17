@@ -61,8 +61,24 @@ function HashMap(){
     }
 
 
+    function get(key){
+        code = hash(key);
+        res = null;
 
-    return {hash,set};
+        bucket = hashArray[code]
+        for(let i = 0;i<bucket.length;i++){
+            if(bucket[i][0]===key){
+                res = bucket[i][1];
+            }
+        }
+        console.log(res);
+        return res;
+
+    }
+
+
+
+    return {hash,set,get};
 }
 
 
@@ -71,3 +87,4 @@ hashObj = HashMap();
 hashObj.set("adi","s");
 hashObj.set("adi","a");
 hashObj.set("sfjk","LL")
+hashObj.get("adi")
