@@ -155,10 +155,29 @@ function HashMap(){
         return vls;
     }
 
+    function entries(){
+
+
+        vls = [];
+        for(let i=0;i<hashArray.length;i++){
+            bucket = hashArray[i];
+            if(bucket){
+                for(let j =0;j<bucket.length;j++){
+                    val = bucket[j]
+                    vls.push(val);
+                }
+            }
+        }
+
+        console.log(vls);
+        return vls;
+        
+    }
 
 
 
-    return {hash,set,get,has,remove,length,clear,keysf,values};
+
+    return {hash,set,get,has,remove,length,clear,keysf,values,entries};
 }
 
 
@@ -175,4 +194,5 @@ hashObj.clear();
 hashObj.set("adi","s");
 console.log(hashObj.keysf());
 hashObj.values();
+hashObj.entries();
 
